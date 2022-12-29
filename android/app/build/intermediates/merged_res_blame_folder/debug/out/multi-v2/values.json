@@ -59,42 +59,6 @@
                     }
                 },
                 {
-                    "source": "/Users/PRB/projects/codeup/patientGuiderApp/android/app/build/generated/res/resValues/debug/values/gradleResValues.xml",
-                    "from": {
-                        "startLines": "6,8",
-                        "startColumns": "4,4",
-                        "startOffsets": "156,262",
-                        "endColumns": "63,68",
-                        "endOffsets": "215,326"
-                    },
-                    "to": {
-                        "startLines": "661,662",
-                        "startColumns": "4,4",
-                        "startOffsets": "41901,41965",
-                        "endColumns": "63,68",
-                        "endOffsets": "41960,42029"
-                    }
-                },
-                {
-                    "source": "/Users/PRB/projects/codeup/patientGuiderApp/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "54",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "267"
-                    },
-                    "to": {
-                        "startLines": "828",
-                        "startColumns": "4",
-                        "startOffsets": "60034",
-                        "endLines": "831",
-                        "endColumns": "12",
-                        "endOffsets": "60212"
-                    }
-                },
-                {
                     "source": "/Users/PRB/.gradle/caches/transforms-3/25ca79b7ef1a689e48a9ba2099d7ac89/transformed/jetified-appcompat-resources-1.4.1/res/values/values.xml",
                     "from": {
                         "startLines": "2,29,36,47,74",
@@ -133,6 +97,23 @@
                     }
                 },
                 {
+                    "source": "/Users/PRB/projects/codeup/symptom-checker/android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "53",
+                        "endOffsets": "65"
+                    },
+                    "to": {
+                        "startLines": "698",
+                        "startColumns": "4",
+                        "startOffsets": "44503",
+                        "endColumns": "53",
+                        "endOffsets": "44552"
+                    }
+                },
+                {
                     "source": "/Users/PRB/.gradle/caches/transforms-3/499913aa779d5677f84de1b3821854aa/transformed/coordinatorlayout-1.1.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,6,16",
@@ -168,6 +149,42 @@
                         "endLines": "7113",
                         "endColumns": "24",
                         "endOffsets": "385893"
+                    }
+                },
+                {
+                    "source": "/Users/PRB/projects/codeup/symptom-checker/android/app/build/generated/res/resValues/debug/values/gradleResValues.xml",
+                    "from": {
+                        "startLines": "6,8",
+                        "startColumns": "4,4",
+                        "startOffsets": "156,262",
+                        "endColumns": "63,68",
+                        "endOffsets": "215,326"
+                    },
+                    "to": {
+                        "startLines": "661,662",
+                        "startColumns": "4,4",
+                        "startOffsets": "41901,41965",
+                        "endColumns": "63,68",
+                        "endOffsets": "41960,42029"
+                    }
+                },
+                {
+                    "source": "/Users/PRB/projects/codeup/symptom-checker/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "267"
+                    },
+                    "to": {
+                        "startLines": "828",
+                        "startColumns": "4",
+                        "startOffsets": "60034",
+                        "endLines": "831",
+                        "endColumns": "12",
+                        "endOffsets": "60212"
                     }
                 },
                 {
@@ -238,23 +255,6 @@
                         "startOffsets": "44420",
                         "endColumns": "82",
                         "endOffsets": "44498"
-                    }
-                },
-                {
-                    "source": "/Users/PRB/projects/codeup/patientGuiderApp/android/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "53",
-                        "endOffsets": "65"
-                    },
-                    "to": {
-                        "startLines": "698",
-                        "startColumns": "4",
-                        "startOffsets": "44503",
-                        "endColumns": "53",
-                        "endOffsets": "44552"
                     }
                 },
                 {
