@@ -118,7 +118,7 @@ function BodysScreen({navigation, route}) {
         <Body part={part} goBack={() => navigation.goBack()} />
       </ScrollView>
 
-      <Box bg="light.50" position="static" bottom={0}>
+      <Box bg="light.200" position="static" bottom={0}>
         <ScrollView
           horizontal
           w={['100%']}
@@ -159,7 +159,7 @@ function BodysScreen({navigation, route}) {
             })}
           </HStack>
         </ScrollView>
-        <Center mb={1}>
+        <Center bg="white">
           <IconButton
             size="sm"
             variant="layout"
