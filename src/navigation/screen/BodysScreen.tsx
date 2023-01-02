@@ -3,37 +3,47 @@ import {
   NativeBaseProvider,
   Box,
   HStack,
-  Container,
   Flex,
-  HamburgerIcon,
-  Text,
-  InfoIcon,
-  VStack,
-  Input,
-  Icon,
-  SearchIcon,
-  Spacer,
-  Avatar,
-  Divider,
   Image,
   Center,
-  AspectRatio,
   ScrollView,
-  Fab,
   Heading,
   IconButton,
   CloseIcon,
-  Pressable,
 } from 'native-base';
-import {useState} from 'react';
-import {capitalize, lowerCase, range} from 'lodash';
+import {capitalize, lowerCase} from 'lodash';
 import {Header, PatientMode} from '../../component/header';
+import PressWrap from '../../component/Pressable';
 const headImg = require('../../images/bodys/head.png');
 const neckImg = require('../../images/bodys/neck.png');
 const chestImg = require('../../images/bodys/chest.png');
 const abdomenImg = require('../../images/bodys/abdomen.png');
 const upperLimbImg = require('../../images/bodys/upper_limb.png');
 const lowerLimbImg = require('../../images/bodys/lower_limb.png');
+
+const heartImg = require('../../images/chest/heart.png');
+const lungImg = require('../../images/chest/lung.png');
+const esophagusImg = require('../../images/neck/esophagus.png');
+const throatImg = require('../../images/neck/throat.png');
+const thyroidImg = require('../../images/neck/thyroid_gland.png');
+const faceImg = require('../../images/head/face.png');
+const armImg = require('../../images/upper/arm.png');
+const elbowImg = require('../../images/upper/elbow.png');
+const handImg = require('../../images/upper/hand.png');
+const shoulderImg = require('../../images/upper/shoulder.png');
+
+const partsImg = [
+  heartImg,
+  lungImg,
+  esophagusImg,
+  throatImg,
+  thyroidImg,
+  faceImg,
+  armImg,
+  elbowImg,
+  handImg,
+  shoulderImg,
+];
 
 const HEAD_PART = 'head';
 const NECK_PART = 'neck';
@@ -51,7 +61,7 @@ export const BODY_PART = {
   lower_limb: {key: LOWER_LIMB_PART, label: 'Lower limb'},
 };
 
-type Mode =
+type Part =
   | typeof HEAD_PART
   | typeof NECK_PART
   | typeof CHEST_PART
@@ -59,26 +69,26 @@ type Mode =
   | typeof UPPER_LIMB_PART
   | typeof LOWER_LIMB_PART;
 
-function Body({mode}: {mode: Mode}) {
+function Body({part}: {part: Part; goBack: () => void}) {
   const imageSrc =
-    mode === HEAD_PART
+    part === HEAD_PART
       ? headImg
-      : mode === NECK_PART
+      : part === NECK_PART
       ? neckImg
-      : mode === CHEST_PART
+      : part === CHEST_PART
       ? chestImg
-      : mode === ABDOMEN_PART
+      : part === ABDOMEN_PART
       ? abdomenImg
-      : mode === UPPER_LIMB_PART
+      : part === UPPER_LIMB_PART
       ? upperLimbImg
-      : mode === LOWER_LIMB_PART
+      : part === LOWER_LIMB_PART
       ? lowerLimbImg
       : null;
   return (
     <>
       <Center mt={5}>
         <Heading size="md" color="primary.600" bold>
-          {capitalize(lowerCase(mode))}
+          {capitalize(lowerCase(part))}
         </Heading>
       </Center>
       <Box alignItems="center" my={5}>
@@ -87,7 +97,7 @@ function Body({mode}: {mode: Mode}) {
             height={300}
             resizeMode="contain"
             source={imageSrc}
-            alt={mode}
+            alt={part}
           />
         </Flex>
       </Box>
@@ -96,67 +106,55 @@ function Body({mode}: {mode: Mode}) {
 }
 
 function BodysScreen({navigation, route}) {
-  console.log('body screen navigation 1111111111', navigation);
-  const {mode} = route.params;
-  console.log('body screen route params 222222222222222', route.params);
+  console.log('body screen navigation', navigation);
+  const {mode, part} = route.params;
+  console.log('body screen route params', route.params);
   return (
     <NativeBaseProvider>
       <ScrollView p="2" w="100%" bg="white" safeAreaY={20}>
         <Header />
-        <PatientMode />
+        <PatientMode mode={mode} />
         <Center mt={3}>Please click on the discomfort area</Center>
-        <Body mode={mode} goBack={() => navigation.goBack()} />
+        <Body part={part} goBack={() => navigation.goBack()} />
       </ScrollView>
 
       <Box bg="light.50" position="static" bottom={0}>
-        <ScrollView horizontal w={['100%']}>
+        <ScrollView
+          horizontal
+          w={['100%']}
+          overScrollMode="always"
+          scrollPerfTag="always"
+          nestedScrollEnabled={true}>
           <HStack
             px={2}
-            boxSize={22}
             space={4}
             height="80px"
             w="100%"
             alignItems="center"
             alignContent="center">
-            {range(10).map((value, index) => {
+            {partsImg.map((value, index) => {
               return (
-                <Pressable
-                  onPressIn={() => {
-                    console.log('ssssssssssssssssss');
+                <PressWrap
+                  onPress={() => {
+                    //todo navigate to symptoms page
+                    console.log('todo navigate to symptoms page');
                   }}>
-                  {({isHovered, isFocused, isPressed}) => {
-                    return (
-                      <Box
-                        maxW="96"
-                        shadow="3"
-                        bg={
-                          isPressed
-                            ? 'coolGray.200'
-                            : isHovered
-                            ? 'coolGray.200'
-                            : 'coolGray.100'
-                        }
-                        style={{
-                          transform: [
-                            {
-                              scale: isPressed ? 0.9 : 1,
-                            },
-                          ],
-                        }}>
-                        <Center
-                          bg="primary.100"
-                          height={10}
-                          width={20}
-                          key={index}
-                          justifyContent="center"
-                          alignItems="center"
-                          alignContent="center">
-                          {value}
-                        </Center>
-                      </Box>
-                    );
-                  }}
-                </Pressable>
+                  <Center
+                    height={10}
+                    s
+                    width={20}
+                    key={index}
+                    justifyContent="center"
+                    alignItems="center"
+                    alignContent="center">
+                    <Image
+                      height={'64px'}
+                      resizeMode="contain"
+                      source={value}
+                      alt="body"
+                    />
+                  </Center>
+                </PressWrap>
               );
             })}
           </HStack>

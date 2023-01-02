@@ -1,27 +1,22 @@
 import * as React from 'react';
 import {
-  NativeBaseProvider,
   Box,
   HStack,
-  Container,
   Flex,
-  HamburgerIcon,
   Text,
   InfoIcon,
   VStack,
   Input,
-  Icon,
   SearchIcon,
-  Spacer,
-  Avatar,
   Divider,
   Image,
-  Center,
-  AspectRatio,
-  ScrollView,
-  Fab,
 } from 'native-base';
-import {useState} from 'react';
+import PressWrap from './Pressable';
+import {
+  FEMALE_MODE,
+  MALE_MODE,
+  PEDIATRIC_MODE,
+} from '../navigation/screen/HomeScreen';
 const logoSmImg = require('../images/logo_sm.png');
 const maleImg = require('../images/male.png');
 const maleActiveImg = require('../images/male_active.png');
@@ -29,8 +24,6 @@ const femaleImg = require('../images/female.png');
 const femaleActiveImg = require('../images/female_active.png');
 const childImg = require('../images/child.png');
 const childActiveImg = require('../images/child_active.png');
-const bodyImg = require('../images/body.png');
-const bodyFemaleImg = require('../images/body_female.png');
 
 export function Header() {
   return (
@@ -72,35 +65,65 @@ export function Header() {
   );
 }
 
-export function PatientMode() {
+export function PatientMode({
+  mode,
+  onPress,
+}: {
+  mode?: string;
+  onPress?: (mode: string) => void;
+}) {
   return (
     <Box
+      key={mode}
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
       mt={3}
       mx={10}>
-      <Image
-        width="56px"
-        height="56px"
-        borderRadius={100}
-        source={maleActiveImg}
-        alt="male"
-      />
-      <Image
-        width="56px"
-        height="56px"
-        borderRadius={100}
-        source={femaleImg}
-        alt="female"
-      />
-      <Image
-        width="56px"
-        height="56px"
-        borderRadius={100}
-        source={childImg}
-        alt="child"
-      />
+      <PressWrap
+        onPress={() => {
+          if (onPress) {
+            onPress(MALE_MODE);
+          }
+        }}>
+        <Image
+          width="56px"
+          height="56px"
+          borderRadius={100}
+          source={mode == MALE_MODE ? maleActiveImg : maleImg}
+          alt="male"
+        />
+      </PressWrap>
+
+      <PressWrap
+        onPress={() => {
+          if (onPress) {
+            onPress(FEMALE_MODE);
+          }
+        }}>
+        <Image
+          width="56px"
+          height="56px"
+          borderRadius={100}
+          source={mode == FEMALE_MODE ? femaleActiveImg : femaleImg}
+          alt="female"
+        />
+      </PressWrap>
+
+      <PressWrap
+        onPress={() => {
+          if (onPress) {
+            onPress(PEDIATRIC_MODE);
+          }
+        }}>
+        <Image
+          width="56px"
+          height="56px"
+          borderRadius={100}
+          source={mode == PEDIATRIC_MODE ? childActiveImg : childImg}
+          alt="child"
+        />
+      </PressWrap>
       <Divider
         w="200%"
         mx="-100"

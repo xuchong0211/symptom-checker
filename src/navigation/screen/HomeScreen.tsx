@@ -11,9 +11,16 @@ import {
 import {useState} from 'react';
 import {Header, PatientMode} from '../../component/header';
 import {BODY_PART} from './BodysScreen';
+const bodyImg = require('../../images/body.png');
 const bodyFemaleImg = require('../../images/body_female.png');
 
-function Body({onPress}: {onPress: (mode: string) => void}) {
+function Body({
+  mode,
+  onPress,
+}: {
+  mode: string;
+  onPress: (part: string) => void;
+}) {
   const xOffset = -20;
   const fabProps = {
     renderInPortal: false,
@@ -35,9 +42,10 @@ function Body({onPress}: {onPress: (mode: string) => void}) {
     <Box alignItems="center" height="100%" my={5}>
       <Flex>
         <Image
+          key={mode}
           height={550}
           resizeMode="contain"
-          source={bodyFemaleImg}
+          source={mode == FEMALE_MODE ? bodyFemaleImg : bodyImg}
           alt="body"
         />
         <Fab
@@ -102,13 +110,17 @@ export const PEDIATRIC_MODE = 'PEDIATRIC_MODE';
 
 function HomeScreen({navigation}) {
   const [mode, setMode] = useState(MALE_MODE);
+  console.log('mode', mode);
   return (
     <NativeBaseProvider>
       <ScrollView p="2" w="100%" bg="white" safeAreaY={20}>
         <Header />
-        <PatientMode />
+        <PatientMode onPress={mode => setMode(mode)} mode={mode} />
         <Center mt={3}>Please click on the discomfort area</Center>
-        <Body onPress={mode => navigation.navigate('Body', {mode})} />
+        <Body
+          mode={mode}
+          onPress={part => navigation.navigate('Body', {mode, part})}
+        />
       </ScrollView>
     </NativeBaseProvider>
   );
