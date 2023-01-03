@@ -11,12 +11,12 @@ import {
   Divider,
   Image,
 } from 'native-base';
-import PressWrap from './Pressable';
+import PressWrap from './pressable';
 import {
-  FEMALE_MODE,
-  MALE_MODE,
-  PEDIATRIC_MODE,
-} from '../navigation/screen/HomeScreen';
+    FEMALE_MODE,
+    MALE_MODE, PatientModeType,
+    PEDIATRIC_MODE,
+} from '../navigation/screen/BodyScreen';
 const logoSmImg = require('../images/logo_sm.png');
 const maleImg = require('../images/male.png');
 const maleActiveImg = require('../images/male_active.png');
@@ -42,7 +42,7 @@ export function Header() {
 
       <VStack w="100%" space={1} alignSelf="center" mt={3}>
         <Input
-          placeholder="enter your symptoms"
+          placeholder="Enter your symptoms"
           width="100%"
           borderWidth="0"
           borderRadius="md"
@@ -69,7 +69,7 @@ export function PatientMode({
   mode,
   onPress,
 }: {
-  mode?: string;
+  mode?: PatientModeType;
   onPress?: (mode: string) => void;
 }) {
   return (

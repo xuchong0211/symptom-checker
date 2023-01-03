@@ -10,7 +10,8 @@ import {
 } from 'native-base';
 import {useState} from 'react';
 import {Header, PatientMode} from '../../component/header';
-import {BODY_PART} from './BodysScreen';
+import {BODY_PART} from "./OrganScreenScreen";
+import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 const bodyImg = require('../../images/body.png');
 const bodyFemaleImg = require('../../images/body_female.png');
 
@@ -106,9 +107,12 @@ function Body({
 
 export const MALE_MODE = 'MALE_MODE';
 export const FEMALE_MODE = 'FEMALE_MODE';
-export const PEDIATRIC_MODE = 'PEDIATRIC_MODE';
+export const PEDIATRIC_MODE = 'PEDIATRIC_MODE'
 
-function HomeScreen({navigation}) {
+
+export type PatientModeType = typeof MALE_MODE | typeof FEMALE_MODE | typeof PEDIATRIC_MODE
+
+function BodyScreen({navigation}: {navigation: NativeStackNavigationProp<any>}) {
   const [mode, setMode] = useState(MALE_MODE);
   console.log('mode', mode);
   return (
@@ -119,11 +123,11 @@ function HomeScreen({navigation}) {
         <Center mt={3}>Please click on the discomfort area</Center>
         <Body
           mode={mode}
-          onPress={part => navigation.navigate('Body', {mode, part})}
+          onPress={part => navigation.navigate('Organ', {mode, part})}
         />
       </ScrollView>
     </NativeBaseProvider>
   );
 }
 
-export default HomeScreen;
+export default BodyScreen;
